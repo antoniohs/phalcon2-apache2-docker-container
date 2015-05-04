@@ -1,4 +1,3 @@
-# Developer www machine v0.0.1
 FROM ubuntu:14.04
 
 MAINTAINER Antonio Manuel Hernández Sánchez

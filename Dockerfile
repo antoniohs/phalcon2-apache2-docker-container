@@ -10,7 +10,7 @@ RUN apt-get install -y software-properties-common;\
     apt-get upgrade -y --force-yes -q
 
 #Installing Git, Php5, Apache2
-RUN apt-get install -y --force-yes -q php5-cli php5-mcrypt php5-curl php5-mysql php5-sqlite php5-memcached php5-xdebug php-apc git php5-dev apache2 libapache2-mod-php5 zend-framework
+RUN apt-get install -y --force-yes -q php5-cli php5-mcrypt php5-curl php5-mysql php5-sqlite php5-memcached php5-xdebug php-apc git php5-dev apache2 libapache2-mod-php5 zend-framework php5-redis
 
 #Installing Phalcon 2.0
 RUN mkdir -p /tmp/phalcon

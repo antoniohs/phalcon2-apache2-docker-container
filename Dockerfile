@@ -4,7 +4,7 @@ MAINTAINER Antonio Manuel Hernández Sánchez
 
 #Setting repositories and updating packages
 RUN apt-get install -y software-properties-common;\
-    apt-add-repository -y ppa:phalcon/stable
+    apt-add-repository -y ppa:phalcon/stable;\
     apt-get clean;\
     apt-get update -q;\
     apt-get upgrade -y --force-yes -q

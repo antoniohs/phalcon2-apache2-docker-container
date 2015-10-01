@@ -1,29 +1,19 @@
-FROM ubuntu:14.04
+FROM ubuntu:15.04
 
 MAINTAINER Antonio Manuel Hernández Sánchez
 
 #Setting repositories and updating packages
 RUN apt-get install -y software-properties-common;\
-    apt-add-repository -y ppa:ondrej/php5-5.6;\
+    apt-add-repository -y ppa:phalcon/stable
     apt-get clean;\
     apt-get update -q;\
     apt-get upgrade -y --force-yes -q
 
 #Installing Git, Php5, Apache2
-RUN apt-get install -y --force-yes -q php5-cli php5-mcrypt php5-curl php5-mysql php5-sqlite php5-memcached php5-xdebug php-apc git php5-dev apache2 libapache2-mod-php5 zend-framework php5-redis php5-intl
+RUN apt-get install -y --force-yes -q php5-phalcon php5-redis php5-intl php5-cli php5-xdebug php5-mysql php5-curl php5-mcrypt apache2 libapache2-mod-php5
 
-#Installing Phalcon 2.0
-RUN mkdir -p /tmp/phalcon
-WORKDIR /tmp/phalcon
-RUN git clone http://github.com/phalcon/cphalcon
-WORKDIR /tmp/phalcon/cphalcon
-RUN git checkout 2.0.0
-RUN cd ext;./install
 RUN echo 'extension=phalcon.so' > /etc/php5/apache2/conf.d/30-phalcon.ini
 RUN echo 'extension=phalcon.so' > /etc/php5/cli/conf.d/30-phalcon.ini
-RUN echo 'short_open_tag=On' > /etc/php5/apache2/conf.d/40-shortag.ini
-RUN echo 'display_errors=On' > /etc/php5/apache2/conf.d/50-display_errors.ini
-
 
 #Enabling mod_rewrite
 RUN a2enmod rewrite
@@ -43,9 +33,14 @@ ENV APPLICATION_ENV development
 
 RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 
+RUN mkdir -p /source/releases/fake_release
+RUN link -s /source/releases/fake_release /source/current
+RUN link -s /var/www /source/current
+
 EXPOSE 80
 
-VOLUME /var/www
+VOLUME /source
+
 WORKDIR /var/www
 
 ENTRYPOINT ["/usr/sbin/apache2"]

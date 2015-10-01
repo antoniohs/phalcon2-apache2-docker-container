@@ -34,8 +34,8 @@ ENV APPLICATION_ENV development
 RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 
 RUN mkdir -p /source/releases/fake_release
-RUN link -s /source/releases/fake_release /source/current
-RUN link -s /var/www /source/current
+RUN ln -s /source/releases/fake_release /source/current
+RUN ln -s /var/www /source/current
 
 EXPOSE 80
 

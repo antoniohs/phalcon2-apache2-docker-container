@@ -33,11 +33,12 @@ ENV APPLICATION_ENV development
 
 RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 
-VOLUME /source
-#RUN mkdir -p /source/releases/fake_release
-#RUN ln -s /source/releases/fake_release /source/current
+RUN mkdir -p /deploy/releases/fake_release
+RUN ln -s /deploy/releases/fake_release /deploy/current
 RUN rm -rf /var/www
-RUN ln -s /source/current /var/www
+RUN ln -s /deploy/current /var/www
+
+VOLUME /deploy
 
 EXPOSE 80
 

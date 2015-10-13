@@ -33,7 +33,7 @@ ENV APPLICATION_ENV development
 
 RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 
-RUN curl -sS https://getcomposer.org/installer | sudo php
+RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
 RUN mkdir -p /deploy/releases/fake_release

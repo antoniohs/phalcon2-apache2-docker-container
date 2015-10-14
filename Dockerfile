@@ -19,6 +19,8 @@ RUN a2enmod rewrite
 ADD apache-config /etc/apache2/sites-available/000-default.conf
 ADD 20-xdebug.ini /etc/php5/apache2/conf.d/20-xdebug.ini
 ADD 20-xdebug.ini /etc/php5/cli/conf.d/20-xdebug.ini
+ADD 20-mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini
+ADD 20-mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data

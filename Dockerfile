@@ -23,6 +23,8 @@ ADD 20-xdebug.ini /etc/php5/apache2/conf.d/20-xdebug.ini
 ADD 20-xdebug.ini /etc/php5/cli/conf.d/20-xdebug.ini
 ADD 20-mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini
 ADD 20-mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
+RUN ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/cli/conf.d/30-phalcon.ini
+RUN ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/apache2/conf.d/30-phalcon.ini
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data

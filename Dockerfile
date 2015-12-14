@@ -1,10 +1,11 @@
-FROM ubuntu:15.04
+FROM ubuntu:15.10
 
 MAINTAINER Antonio Manuel Hernández Sánchez
 
 #Setting repositories and updating packages
 RUN apt-get install -y software-properties-common;\
     apt-add-repository -y ppa:phalcon/stable;\
+    apt-add-repository -y ppa:ondrej/apache2;\
     apt-get clean;\
     apt-get update -q;\
     apt-get upgrade -y --force-yes -q

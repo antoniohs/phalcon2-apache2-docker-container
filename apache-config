@@ -1,4 +1,7 @@
 <VirtualHost *:80>
+    LoadModule http2_module /usr/lib/apache2/modules/mod_http2.so
+    ProtocolsHonorOrder On
+    Protocols h2 h2c http/1.1
 	ServerAdmin webmaster@localhost
 	DocumentRoot /var/www/public
 	<Directory /var/www/public>

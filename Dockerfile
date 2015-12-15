@@ -2,6 +2,8 @@ FROM ubuntu:15.10
 
 MAINTAINER Antonio Manuel Hernández Sánchez
 
+RUN echo "breaking cache"
+
 #Setting repositories and updating packages
 RUN apt-get install -y software-properties-common;\
     apt-add-repository -y ppa:phalcon/stable;\

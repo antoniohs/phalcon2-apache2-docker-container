@@ -32,6 +32,9 @@ RUN mkdir -p /etc/apache2/ssl/crt
 RUN mkdir -p /etc/apache2/ssl/key
 RUN openssl req -new -x509 -days 365 -keyout /etc/apache2/ssl/key/vhost1.key -out /etc/apache2/ssl/crt/vhost1.crt -nodes -subj '/O=VirtualHost Website Company name/OU=Virtual Host Website department/CN=www.virtualhostdomain.com'
 
+#Enabling module ssl
+RUN a2enmod ssl
+
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2

@@ -19,12 +19,18 @@ RUN a2enmod rewrite
 
 #Modifiying apache configuration
 ADD apache-config /etc/apache2/sites-available/000-default.conf
+ADD apache-config /etc/apache2/sites-available/default-ssl.conf
 ADD 20-xdebug.ini /etc/php5/apache2/conf.d/20-xdebug.ini
 ADD 20-xdebug.ini /etc/php5/cli/conf.d/20-xdebug.ini
 ADD 20-mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini
 ADD 20-mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
 RUN ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/cli/conf.d/30-phalcon.ini
 RUN ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/apache2/conf.d/30-phalcon.ini
+
+#Creating self-signed certificate
+RUN mkdir -p /etc/apache2/ssl/crt
+RUN mkdir -p /etc/apache2/ssl/key
+RUN openssl req -new -x509 -days 365 -keyout /etc/apache2/ssl/key/vhost1.key -out /etc/apache2/ssl/crt/vhost1.crt -nodes -subj '/O=VirtualHost Website Company name/OU=Virtual Host Website department/CN=www.virtualhostdomain.com'
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data

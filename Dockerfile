@@ -20,6 +20,7 @@ RUN a2enmod rewrite
 #Modifiying apache configuration
 ADD apache-config /etc/apache2/sites-available/000-default.conf
 ADD apache-config /etc/apache2/sites-available/default-ssl.conf
+RUN ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
 ADD 20-xdebug.ini /etc/php5/apache2/conf.d/20-xdebug.ini
 ADD 20-xdebug.ini /etc/php5/cli/conf.d/20-xdebug.ini
 ADD 20-mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini

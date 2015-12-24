@@ -10,7 +10,7 @@ RUN apt-get install -y software-properties-common;\
     apt-get upgrade -y --force-yes -q
 
 #Installing Git, Php5, Apache2, curl
-RUN apt-get install -y --force-yes -q git curl php5-phalcon php5-redis php5-intl php5-cli php5-xdebug php5-mysql php5-curl php5-mcrypt apache2 libapache2-mod-php5 supervisor
+RUN apt-get install -y --force-yes -q git curl php5-phalcon php5-redis php5-intl php5-cli php5-xdebug php5-mysql php5-curl php5-mcrypt apache2 libapache2-mod-php5 supervisor sudo
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 #Enabling mod_rewrite
